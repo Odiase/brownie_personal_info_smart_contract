@@ -4,7 +4,7 @@ import time
 
 
 def deploy_personal_info():
-    # getting my custom made account from brownie accounts
+    # getting my custom made account from brownie-accounts
     # account = accounts.load('personal_info_account')
 
     # getting private key from .yaml file
@@ -25,8 +25,6 @@ def deploy_personal_info():
 
     # calling the get person function in the contract
     person_created = personal_info.get_person_info('Efosa')
-
-    print("Person Info : ", person_created)
 
 
 
