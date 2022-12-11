@@ -28,6 +28,5 @@ def deploy_personal_info():
 
 
 
-
 def main():
     deploy_personal_info()

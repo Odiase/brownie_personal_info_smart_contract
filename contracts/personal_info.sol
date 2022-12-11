@@ -4,6 +4,8 @@ pragma solidity ^0.8.7;
 
 contract PersonalInfo{
 
+    uint favourite_number;
+
     struct HouseAddress {
         string location;
     }
@@ -48,5 +50,13 @@ contract PersonalInfo{
         // deleting person record
         delete name_to_person[name];
         delete person_exists[name];
+    }
+
+    function change_favourite_number(uint256 _number) public {
+        favourite_number = _number;
+    }
+
+    function view_favourite_number() public view returns (uint256) {
+        return favourite_number;
     }
 }
