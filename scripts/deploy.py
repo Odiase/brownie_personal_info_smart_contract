@@ -1,16 +1,25 @@
 # third packages imports
-from brownie import accounts, config, PersonalInfo
+from brownie import accounts, config, PersonalInfo, network
 import time
 
 
+
+def get_account():
+    '''Getting Account To Work With.'''
+
+    if network.show_active() == True:
+        return accounts[0]
+        # getting my connected blockchain network
+    return accounts.add(config['wallets']['private_key'])
+
+
 def deploy_personal_info():
-    # getting my custom made account from brownie-accounts
-    # account = accounts.load('personal_info_account')
+    '''Deploying Contract'''
 
     # getting private key from .yaml file
     # account = accounts.add(config['wallets']['from_key'])
 
-    account = accounts[0]
+    account = get_account()
     # deploying the smart contract
     personal_info = PersonalInfo.deploy({"from" : account})
 

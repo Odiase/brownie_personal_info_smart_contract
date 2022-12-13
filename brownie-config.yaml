@@ -1,3 +1,4 @@
 dotenv: .env
 wallets:
-  from_key: ${PRIVATE_KEY}
+  private_key: ${PRIVATE_KEY}
+  address: ${ADDRESS}
