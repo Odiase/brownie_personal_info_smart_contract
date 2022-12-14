@@ -1,4 +1,13 @@
 dotenv: .env
+
+# walltes to work with
 wallets:
   private_key: ${PRIVATE_KEY}
   address: ${ADDRESS}
+
+# Application Environments
+environments:
+  development: 
+    verify: False
+  goerli:
+    verify: True

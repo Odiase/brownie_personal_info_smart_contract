@@ -1,27 +1,22 @@
-# third packages imports
-from brownie import accounts, config, PersonalInfo, network
+#stlib imports
 import time
 
+# third packages imports
+from brownie import accounts, config, PersonalInfo, network
 
+# local imports
+from .extras import get_account
 
-def get_account():
-    '''Getting Account To Work With.'''
-
-    if network.show_active() == True:
-        return accounts[0]
-        # getting my connected blockchain network
-    return accounts.add(config['wallets']['private_key'])
 
 
 def deploy_personal_info():
     '''Deploying Contract'''
 
-    # getting private key from .yaml file
-    # account = accounts.add(config['wallets']['from_key'])
-
     account = get_account()
+    publish_source = config['environments'][network.show_active()].get('verify')
+
     # deploying the smart contract
-    personal_info = PersonalInfo.deploy({"from" : account})
+    personal_info = PersonalInfo.deploy({"from" : account}, publish_source=publish_source)
 
     # sleeping for a second so as to avoid a brownie exception that says the web3 connection was closed too soon(It's a bug in brownie)
     time.sleep(1)
